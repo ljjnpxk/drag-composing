@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="renderer" content="webkit">
+    <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="apple-mobile-web-app-title" content/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta content="email=no" name="format-detection" />
+	<title>元素拖拽</title>
+	<style>
+		*{
+			margin:0;
+			padding: 0;
+			list-style: 0;
+			font-family: "微软雅黑";
+		}
+		body{
+			color: #333;
+			font-size: 14px;
+			background-color: #f6f7f8;
+		}
+		.wrap{
+			padding-top: 50px;
+		}
+		.code-box{
+			width: 375px;
+			height: 667px;
+			background: #fff url(img/code-bg.png) no-repeat center;
+			background-size: 100%;
+			margin:0 auto;
+			position: relative;
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+			padding: 20px;
+		}
+		.code-box .user-info{
+			position: absolute;
+			top:30px;
+			left:30px;
+			overflow: hidden;
+			cursor: move;
+		}
+		.code-box .user-info .avatar{
+			width: 80px;
+			height: 80px;
+			overflow: hidden;
+			-webkit-border-radius: 4px;
+			border-radius: 4px;
+			float: left;
+		}
+		.code-box .user-info .avatar img{
+			width: 100%;
+			min-height: 100%;
+		}
+		.code-box .user-info .name{
+			float: left;
+			padding-left: 10px;
+		}
+		.code-box .user-info .name h3{
+			font-size: 15px;
+			line-height: 2;
+			font-weight: bold;
+		}
+		.code-box .user-info .name p{
+			color: #999;
+		}
+		.code-box .code{
+			position: absolute;
+			left:75px;
+			top:150px;
+			width: 180px;
+			overflow: hidden;
+			cursor: move;
+		}
+		.code-box .code img{
+			width: 100%;
+			min-height: 100%;
+		}
+		.code-box .code p{
+			color: #666;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="code-box" id="codeBox">
+			<div class="user-info" id="userInfo">
+				<div class="avatar"><img src="img/avatar.png" alt="头像"></div>
+				<div class="name">
+					<h3>店铺名称</h3>
+				</div>
+			</div>
+			<div class="code" id="code">
+				<img src="img/code.png" alt="二维码">
+				<p>扫描二维码关注分销宝</p>
+			</div>
+		</div>
+	</div>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/drag-elem.js"></script>
+<script>
+	window.onload = function (){
+		dragElem('userInfo','codeBox',function(pos){
+			console.log("用户信息当前坐标("+pos.x+","+pos.y+")");
+		});
+		dragElem('code','codeBox',function(pos){
+			console.log("二维码当前坐标("+pos.x+","+pos.y+")");
+		});
+		
+	};
+</script>
+</body>
+</html>
